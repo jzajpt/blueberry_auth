@@ -1,0 +1,5 @@
+<% form_for @user do |form| %>
+  <%= form.error_messages %>
+  <%= render :partial => 'users/form', :object => form %>
+  <div><%= form.submit 'Sign up' %></div>
+<% end -%>

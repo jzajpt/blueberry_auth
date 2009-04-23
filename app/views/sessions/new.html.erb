@@ -1,0 +1,14 @@
+<% form_tag session_path do -%>
+  <div><%= label_tag 'email' %>
+  <%= text_field_tag 'email' %></div>
+
+  <div><%= label_tag 'password' %>
+  <%= password_field_tag 'password' %></div>
+
+  <div><%= submit_tag 'Sign in' %></div>
+<% end -%>
+
+<ul>
+  <li><%= link_to t('users.new.link'), new_user_path %></li>
+  <li><%= link_to t('passwords.new.link'), new_password_path %></li>
+</ul>
