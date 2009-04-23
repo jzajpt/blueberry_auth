@@ -1,0 +1,40 @@
+en:
+  # AuthMailer
+  auth_mailer:
+    password_change:
+      subject: 'Your password'
+
+  # AccountsController
+  accounts:
+    edit:
+      title: 'Your account'
+    update:
+      success: 'Your details were updated.'
+  # PasswordsController
+  passwords:
+    new: 
+      link: 'Forgotten password?'
+      title: 'Forgotten password'
+      submit: 'Reset password'
+    edit:
+      title: 'Change your password'
+      submit: 'Save this password'
+    create:
+      success: 'An email with instructions for changing your password was sent.'
+      invalid_email: 'Unknown email.'
+  # SessionsController
+  sessions:
+    new:
+      title: 'Sign in'
+      submit: 'Sign in'
+    create:
+      success: 'Signed in successfully.'
+      invalid_credentials: 'Bad email or password.'
+  # UsersController
+  users:
+    new:
+      link: 'Sign up'
+      title: 'Sign up'
+      submit: 'Sign up'
+    create:
+      success: 'Your account was created.'

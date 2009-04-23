@@ -1,17 +1,17 @@
-<%= error_messages_for :user %>
 <% form_for(:user,
   :url => user_password_path(@user, :token => @user.token),
   :html => { :method => :put }) do |form| %>
-  <div class="password_field">
+  <%= form.error_messages %>
+  <div>
     <%= form.label :password %>
     <%= form.password_field :password %>
   </div>
-  <div class="password_field">
+  <div>
     <%= form.label :password_confirmation %>
     <%= form.password_field :password_confirmation %>
   </div>
-  <div class="submit_field">
-    <%= form.submit "Save this password" %>
+  <div>
+    <%= form.submit t('passwords.edit.submit') %>
   </div>
 <% end %>
 
