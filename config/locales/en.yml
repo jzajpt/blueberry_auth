@@ -3,7 +3,6 @@ en:
   auth_mailer:
     password_change:
       subject: 'Your password'
-
   # AccountsController
   accounts:
     edit:

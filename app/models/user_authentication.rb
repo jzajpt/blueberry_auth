@@ -45,17 +45,17 @@ module UserAuthentication
         user
       end
     end
-    
+
     def base64(data)
       [data].pack('m').strip
     end
 
     def generate_random_hash
-      base64 generate_hash(Time.now, rand)
+      generate_hash(Time.now, rand)
     end
 
     def generate_hash(*string)
-      Digest::SHA2.digest(string.flatten.join('---'))
+      Digest::SHA2.hexdigest(string.flatten.join('---'))
     end
   end
 
@@ -94,7 +94,7 @@ module UserAuthentication
       PASSWORD_HASH_ITERATIONS.times do
         hash = self.class.generate_hash(hash)
       end
-      self.class.base64 hash
+      hash
     end
 
     def generate_token
