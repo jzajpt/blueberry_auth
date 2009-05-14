@@ -1,6 +1,16 @@
 BlueberryAuth
 =============
 
+Testing
+=======
+
+To bootstrap testing environment you have to run following rake task:
+
+  rake test_app:generate
+
+And than as usual:
+
+  rake test
 
 
 Copyright (c) 2009 Jiří Zajpt, released under the MIT license

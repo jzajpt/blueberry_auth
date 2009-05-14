@@ -13,6 +13,19 @@ Rake::TestTask.new(:test) do |t|
   t.verbose = true
 end
 
+namespace :test_app do
+  desc 'Prepare testing environment.'
+  task :generate do
+    FileUtils.rm_rf "test/rails_app" if File.exists?('test/rails_app')
+    system "cd test && rails rails_app && cd rails_app"
+    FileUtils.mkdir_p 'test/rails_app/vendor/plugins/'
+    root = File.dirname(__FILE__)
+    system "ln -s #{root} test/rails_app/vendor/plugins/blueberry_auth"
+    FileUtils.rm_rf "test/rails_app/test/performance"
+    system "cd test/rails_app && script/generate blueberry_auth && rake db:migrate && rake db:test:prepare"
+  end
+end
+
 desc 'Generate documentation for the blueberry_auth plugin.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'

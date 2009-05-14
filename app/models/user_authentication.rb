@@ -46,10 +46,6 @@ module UserAuthentication
       end
     end
 
-    def base64(data)
-      [data].pack('m').strip
-    end
-
     def generate_random_hash
       generate_hash(Time.now, rand)
     end
