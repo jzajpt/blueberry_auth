@@ -10,18 +10,14 @@ module Authentication
 
   def redirect_back_or_to(default)
     session[:return_to] ||= params[:return_to]
-    if session[:return_to]
-      redirect_to(session[:return_to])
-    else
-      redirect_to(default)
-    end
+    redirect_to(session[:return_to] ? session[:return_to] : default)
     session[:return_to] = nil
   end
 
   def redirect_to_with_success_flash(path)
     controller = params[:controller].gsub('/', '.')
     action = params[:action]
-    flash[:notice] = I18n.t("#{controller}.#{action}.success")
+    flash[:notice] = t("#{controller}.#{action}.success")
     redirect_to path
   end
 

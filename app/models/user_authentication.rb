@@ -16,7 +16,7 @@ module UserAuthentication
         attr_accessor :password, :password_confirmation
 
         # Mass assignment accessible attributes
-        attr_accessible :email, :password, :password_confirmation
+        attr_accessible :name, :email, :password, :password_confirmation
 
         # Validations
         validates_presence_of   :email

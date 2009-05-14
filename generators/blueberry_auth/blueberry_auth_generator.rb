@@ -3,7 +3,7 @@ class BlueberryAuthGenerator < Rails::Generator::Base
     record do |m|
       # Add User model
       m.directory File.join('app', 'models')
-      m.file 'user_model.rb', 'app/modelss/user.rb'
+      m.file 'user_model.rb', 'app/models/user.rb'
 
       # Add User factory
       m.directory File.join('test', 'factories')
@@ -15,6 +15,11 @@ class BlueberryAuthGenerator < Rails::Generator::Base
         
       # Add site key
       m.file 'auth_site_key.rb', 'config/initializers/auth_site_key.rb'
+      
+      # Add Authentication mixin to application controller
+      m.gsub_file 'app/controllers/application_controller.rb', /^(class|module) .+$/ do |match|
+        "#{match}\n  include Authentication"
+      end
     end
   end
 end
