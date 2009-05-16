@@ -4,7 +4,7 @@ class AuthMailer < ActionMailer::Base
   def password_change(user)
     from       AUTH_MAILER_FROM
     recipients user.email
-    subject    t('auth_mailer.password_change.subject')
+    subject    I18n.t('auth_mailer.password_change.subject')
     body       :user => user
   end
 end

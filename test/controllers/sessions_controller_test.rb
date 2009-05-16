@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SessionsControllerTest < ActionController::TestCase
+class Evergreen::SessionsControllerTest < ActionController::TestCase
   context "on GET to new" do
     setup { get :new }
 
@@ -20,7 +20,7 @@ class SessionsControllerTest < ActionController::TestCase
     should_respond_with :redirect
     should_assign_to :user, :class => User
     should_set_session(:user_id) { @user.id }
-    should_set_the_flash_to I18n.t('sessions.create.success')
+    should_set_the_flash_to I18n.t('evergreen.sessions.create.success')
     should_redirect_to('the root url') { edit_account_url }
   end
 
@@ -32,7 +32,7 @@ class SessionsControllerTest < ActionController::TestCase
 
     should_respond_with :success
     should_render_template :new
-    should_set_the_flash_to I18n.t('sessions.create.invalid_credentials')
+    should_set_the_flash_to I18n.t('evergreen.sessions.create.invalid_credentials')
   end
 
   context "on DELETE to destroy" do
@@ -43,7 +43,7 @@ class SessionsControllerTest < ActionController::TestCase
     end
 
     should_respond_with :redirect
-    should_set_the_flash_to I18n.t('sessions.destroy.success')
+    should_set_the_flash_to I18n.t('evergreen.sessions.destroy.success')
 
     should "clear user_id from session" do
       assert_nil session[:user_id]

@@ -1,6 +1,9 @@
 BlueberryAuth
 =============
 
+BlueberryAuth is authentication plugin (to be technically correct it's engine) inspired by such plugins
+as restful-auth and clearance. It takes advantage Rails 2.2's i18n.
+
 Testing
 =======
 

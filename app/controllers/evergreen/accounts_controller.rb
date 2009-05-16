@@ -1,4 +1,4 @@
-class AccountsController < ApplicationController
+class Evergreen::AccountsController < ApplicationController
   before_filter :authenticate
 
   # GET /account/edit

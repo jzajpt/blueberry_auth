@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AccountsControllerTest < ActionController::TestCase
+class Evergreen::AccountsControllerTest < ActionController::TestCase
   context "on GET to edit" do
     setup do
       @user = Factory :user
@@ -25,7 +25,7 @@ class AccountsControllerTest < ActionController::TestCase
 
     should_respond_with :redirect
     should_assign_to(:user) { @user }
-    should_set_the_flash_to I18n.t('accounts.update.success')
+    should_set_the_flash_to I18n.t('evergreen.accounts.update.success')
   end
 
   context "on PUT to update with invalid attributes" do

@@ -1,5 +1,5 @@
 <% form_for @user, :url => account_path do |form| %>
   <%= form.error_messages %>
-  <%= render :partial => 'users/form', :object => form %>
+  <%= render :partial => 'evergreen/users/form', :object => form %>
   <div><%= form.submit 'Update' %></div>
 <% end %>

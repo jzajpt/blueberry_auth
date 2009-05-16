@@ -1,4 +1,4 @@
-class PasswordsController < ApplicationController
+class Evergreen::PasswordsController < ApplicationController
   verify :params => [:user_id, :token], :only => [:edit, :update]
 
   before_filter :find_user_with_token, :only => [:edit, :update]
@@ -15,10 +15,10 @@ class PasswordsController < ApplicationController
   def create
     @user = User.find_by_email!(params[:email])
     @user.forgot_password!
-    AuthMailer.deliver_password_change @user
+    ::AuthMailer.deliver_password_change @user
     redirect_to_with_success_flash root_url
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = t('passwords.create.invalid_email')
+    flash[:error] = t('evergreen.passwords.create.invalid_email')
     render 'new'
   end
 

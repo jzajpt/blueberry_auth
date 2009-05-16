@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PasswordsControllerTest < ActionController::TestCase
+class Evergreen::PasswordsControllerTest < ActionController::TestCase
   context "on GET to new" do
     setup { get :new }
 
@@ -33,7 +33,7 @@ class PasswordsControllerTest < ActionController::TestCase
 
     should_respond_with :redirect
     should_assign_to(:user) { @user }
-    should_set_the_flash_to I18n.t('passwords.create.success')
+    should_set_the_flash_to I18n.t('evergreen.passwords.create.success')
 
     should "sent email" do
       assert_sent_email
@@ -42,14 +42,20 @@ class PasswordsControllerTest < ActionController::TestCase
 
   context "on POST to create with unknown email" do
     setup do
-      User.any_instance.expects(:forgot_password!).never
-      AuthMailer.expects(:deliver_password_change).never
       post :create, :email => 'unknown@example.com'
+    end
+    
+    before_should "not generate password token" do
+      User.any_instance.expects(:forgot_password!).never
+    end
+    
+    before_should "not send email" do
+      ::AuthMailer.expects(:deliver_password_change).never
     end
 
     should_respond_with :success
     should_render_template :new
-    should_set_the_flash_to I18n.t('passwords.create.invalid_email')
+    should_set_the_flash_to I18n.t('evergreen.passwords.create.invalid_email')
   end
 
   context "on POST to update with valid passwords" do
@@ -62,7 +68,7 @@ class PasswordsControllerTest < ActionController::TestCase
 
     should_respond_with :redirect
     should_assign_to(:user) { @user }
-    should_set_the_flash_to I18n.t('passwords.update.success')
+    should_set_the_flash_to I18n.t('evergreen.passwords.update.success')
   end
 
   context "on POST to update with non matching passwords" do

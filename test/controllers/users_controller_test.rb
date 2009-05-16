@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UsersControllerTest < ActionController::TestCase
+class Evergreen::UsersControllerTest < ActionController::TestCase
   context "on GET to new" do
     setup { get :new }
 
@@ -19,7 +19,7 @@ class UsersControllerTest < ActionController::TestCase
 
     should_respond_with :redirect
     should_assign_to :user, :class => User
-    should_set_the_flash_to I18n.t('users.create.success')
+    should_set_the_flash_to I18n.t('evergreen.users.create.success')
     should_redirect_to('the root url') { root_url }
   end
 
