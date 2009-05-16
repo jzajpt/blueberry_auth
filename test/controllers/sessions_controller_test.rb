@@ -8,6 +8,7 @@ class Evergreen::SessionsControllerTest < ActionController::TestCase
     should_render_template :new
     should_not_set_the_flash
     should_render_a_form
+    should_not_have_missing_translations
   end
 
   context "on POST to create with valid attributes" do
@@ -33,6 +34,7 @@ class Evergreen::SessionsControllerTest < ActionController::TestCase
     should_respond_with :success
     should_render_template :new
     should_set_the_flash_to I18n.t('evergreen.sessions.create.invalid_credentials')
+    should_not_have_missing_translations
   end
 
   context "on DELETE to destroy" do

@@ -13,6 +13,7 @@ class Evergreen::AccountsControllerTest < ActionController::TestCase
     should_assign_to(:user) { @user }
     should_not_set_the_flash
     should_render_a_form
+    should_not_have_missing_translations
   end
 
   context "on PUT to update with valid attributes" do

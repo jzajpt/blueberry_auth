@@ -9,6 +9,7 @@ class Evergreen::UsersControllerTest < ActionController::TestCase
     should_assign_to :user, :class => User
     should_not_set_the_flash
     should_render_a_form
+    should_not_have_missing_translations
   end
 
   context "on POST to create with valid attributes" do
@@ -34,5 +35,6 @@ class Evergreen::UsersControllerTest < ActionController::TestCase
     should_render_template :new
     should_assign_to :user, :class => User
     should_not_set_the_flash
+    should_not_have_missing_translations
   end
 end

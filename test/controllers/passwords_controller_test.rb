@@ -8,6 +8,7 @@ class Evergreen::PasswordsControllerTest < ActionController::TestCase
     should_render_template :new
     should_not_set_the_flash
     should_render_a_form
+    should_not_have_missing_translations
   end
 
   context "on GET to edit with valid email and token" do
@@ -22,6 +23,7 @@ class Evergreen::PasswordsControllerTest < ActionController::TestCase
     should_assign_to(:user) { @user }
     should_not_set_the_flash
     should_render_a_form
+    should_not_have_missing_translations
   end
 
   context "on POST to create with valid email" do
@@ -56,6 +58,7 @@ class Evergreen::PasswordsControllerTest < ActionController::TestCase
     should_respond_with :success
     should_render_template :new
     should_set_the_flash_to I18n.t('evergreen.passwords.create.invalid_email')
+    should_not_have_missing_translations
   end
 
   context "on POST to update with valid passwords" do
@@ -82,5 +85,6 @@ class Evergreen::PasswordsControllerTest < ActionController::TestCase
     should_respond_with :success
     should_assign_to(:user) { @user }
     should_render_template :edit
+    should_not_have_missing_translations
   end
 end
